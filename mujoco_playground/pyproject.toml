@@ -34,6 +34,9 @@ dependencies = [
     "mujoco>=3.3.6.dev",
     "orbax-checkpoint>=0.11.22",
     "tqdm",
+    "tensorboard",
+    "gymnasium",
+    "imageio",
 ]
 keywords = ["mjx", "mujoco", "sim2real", "reinforcement learning"]
 

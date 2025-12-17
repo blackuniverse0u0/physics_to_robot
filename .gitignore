@@ -6,6 +6,9 @@ __pycache__/
 # C extensions
 *.so
 
+.venv/ 
+mujoco_physics/lecture/
+
 # Distribution / packaging
 .Python
 build/

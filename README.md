@@ -26,12 +26,27 @@ Instead of treating RL as a "black box," this project emphasizes understanding t
 
 
 
-### Phase 1: The Physics & Kinematics (Basics)
+### Phase 1: Modern Robotics & Physics & Mathematics (Basics)
+
+**Rigid-body motions**
+- SO(3), SE(3), so(3), se(3), D.H params, PoE(product of Exponentials), Lie Group, Lie Algebra 
+
+**Forward kinematics**
+
+**Velocity kinematics and statics**
+
+**Inverse kinematics**
+
+**Robot Control**
+
 <!-- *Goal: Understand how rigid bodies move and how to control limbs using geometry.*
 * **Simulation Setup**: MuJoCo with Python bindings.
 * **Kinematics**: Implementing Forward Kinematics (FK) and Inverse Kinematics (IK) using analytical and numerical (Jacobian) methods.
 * **Dynamics**: Understanding Inertia, Coriolis, and Gravity matrices using *Modern Robotics* theory.
 * **Trajectory Planning**  -->
+
+Robotics 3D : https://pab47.github.io/robotics/robotics25.html
+
 
 ### Phase 2: Model-Based Optimal Control (MPC)
 <!-- *Goal: Implement the Quadruped for dynamic locomotion.*
@@ -54,6 +69,11 @@ Instead of treating RL as a "black box," this project emphasizes understanding t
 * **Environment**: Porting the MuJoCo environment to JAX for GPU-accelerated training.
 * **Policy Learning**: Training PPO agents with a curriculum.
 * **Guided Learning**: Using the Phase 2 MPC controller as a reference (Teacher) to warm-start or guide the RL agent. -->
+
+
+PPO details : https://iclr-blog-track.github.io/2022/03/25/ppo-implementation-details/
+
+
 
 ## Tech Stack
 
