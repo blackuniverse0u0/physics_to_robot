@@ -1,0 +1,105 @@
+<mujoco model="quadruped_robust">
+    <compiler angle="radian" coordinate="local" inertiafromgeom="true"/>
+    <!-- <option gravity="0 0 -9.81" integrator="RK4" timestep="0.001"/> -->
+    <option gravity="0 0 0" integrator="RK4" timestep="0.001"/>
+    
+    <default>
+        <!-- <joint damping="1.0" frictionloss="0.1" armature="0.01"/> -->
+        <joint damping="0.0" frictionloss="0.0" armature="0.01"/>
+        <geom solimp="0.9 0.95 0.001" solref="0.02 1"/>
+    </default>
+
+    <worldbody>
+        <light diffuse=".5 .5 .5" pos="0 0 3" dir="0 0 -1"/>
+        <geom type="plane" size="5 5 0.1" rgba=".9 .9 .9 1" friction="1 0.005 0.0001"/>
+        
+        <body name="base_link" pos="0 0 0.5">
+            <geom type="box" size="0.25 0.15 0.05" rgba="0.2 0.2 0.2 1" mass="5.0"/>
+            
+            <body name="FL_hip" pos="0.2 0.15 0">
+                <joint name="FL_j1" type="hinge" axis="1 0 0"/>
+                <geom type="capsule" fromto="0 0 0 0 0.05 0" size="0.02" rgba="1 0 0 1"/>
+                <body name="FL_thigh" pos="0 0.05 0">
+                    <joint name="FL_j2" type="hinge" axis="0 1 0"/>
+                    <geom type="capsule" fromto="0 0 0 0 0 -0.2" size="0.02" rgba="0 1 0 1"/>
+                    <body name="FL_calf" pos="0 0 -0.2">
+                        <joint name="FL_j3" type="hinge" axis="0 1 0"/>
+                        <geom type="capsule" fromto="0 0 0 0 0 -0.2" size="0.02" rgba="0 0 1 1"/>
+                        <site name="FL_tip_site" pos="0 0 -0.2" size="0.015" rgba="1 1 0 1"/>
+                        
+                    </body>
+                </body>
+            </body>
+
+            <body name="FR_hip" pos="0.2 -0.15 0">
+                <joint name="FR_j1" type="hinge" axis="1 0 0"/>
+                <geom type="capsule" fromto="0 0 0 0 -0.05 0" size="0.02" rgba="1 0 0 1"/>
+                <body name="FR_thigh" pos="0 -0.05 0">
+                    <joint name="FR_j2" type="hinge" axis="0 1 0"/>
+                    <geom type="capsule" fromto="0 0 0 0 0 -0.2" size="0.02" rgba="0 1 0 1"/>
+                    <body name="FR_calf" pos="0 0 -0.2">
+                        <joint name="FR_j3" type="hinge" axis="0 1 0"/>
+                        <geom type="capsule" fromto="0 0 0 0 0 -0.2" size="0.02" rgba="0 0 1 1"/>
+                    </body>
+                </body>
+            </body>
+
+            <body name="RL_hip" pos="-0.2 0.15 0">
+                <joint name="RL_j1" type="hinge" axis="1 0 0"/>
+                <geom type="capsule" fromto="0 0 0 0 0.05 0" size="0.02" rgba="1 0 0 1"/>
+                <body name="RL_thigh" pos="0 0.05 0">
+                    <joint name="RL_j2" type="hinge" axis="0 1 0"/>
+                    <geom type="capsule" fromto="0 0 0 0 0 -0.2" size="0.02" rgba="0 1 0 1"/>
+                    <body name="RL_calf" pos="0 0 -0.2">
+                        <joint name="RL_j3" type="hinge" axis="0 1 0"/>
+                        <geom type="capsule" fromto="0 0 0 0 0 -0.2" size="0.02" rgba="0 0 1 1"/>
+                    </body>
+                </body>
+            </body>
+
+            <body name="RR_hip" pos="-0.2 -0.15 0">
+                <joint name="RR_j1" type="hinge" axis="1 0 0"/>
+                <geom type="capsule" fromto="0 0 0 0 -0.05 0" size="0.02" rgba="1 0 0 1"/>
+                <body name="RR_thigh" pos="0 -0.05 0">
+                    <joint name="RR_j2" type="hinge" axis="0 1 0"/>
+                    <geom type="capsule" fromto="0 0 0 0 0 -0.2" size="0.02" rgba="0 1 0 1"/>
+                    <body name="RR_calf" pos="0 0 -0.2">
+                        <joint name="RR_j3" type="hinge" axis="0 1 0"/>
+                        <geom type="capsule" fromto="0 0 0 0 0 -0.2" size="0.02" rgba="0 0 1 1"/>
+                    </body>
+                </body>
+            </body>
+        </body>
+    </worldbody>
+
+    <actuator>
+        <position name="act_FL_j1" joint="FL_j1" kp="50" ctrlrange="-0.785 0.785"/>
+        <position name="act_FL_j2" joint="FL_j2" kp="50" ctrlrange="-3.14 3.14"/>
+        <position name="act_FL_j3" joint="FL_j3" kp="50" ctrlrange="-3.14 0"/>
+
+        <position name="act_FR_j1" joint="FR_j1" kp="50" ctrlrange="-0.785 0.785"/>
+        <position name="act_FR_j2" joint="FR_j2" kp="50" ctrlrange="-3.14 3.14"/>
+        <position name="act_FR_j3" joint="FR_j3" kp="50" ctrlrange="-3.14 0"/>
+
+        <position name="act_RL_j1" joint="RL_j1" kp="50" ctrlrange="-0.785 0.785"/>
+        <position name="act_RL_j2" joint="RL_j2" kp="50" ctrlrange="-3.14 3.14"/>
+        <position name="act_RL_j3" joint="RL_j3" kp="50" ctrlrange="0 3.14"/>
+
+        <position name="act_RR_j1" joint="RR_j1" kp="50" ctrlrange="-0.785 0.785"/>
+        <position name="act_RR_j2" joint="RR_j2" kp="50" ctrlrange="-3.14 3.14"/>
+        <position name="act_RR_j3" joint="RR_j3" kp="50" ctrlrange="0 3.14"/>
+    </actuator>
+    
+    <sensor>
+        <jointvel name="sens_vel_FL_j1" joint="FL_j1"/>
+        <jointvel name="sens_vel_FL_j2" joint="FL_j2"/>
+        <jointvel name="sens_vel_FL_j3" joint="FL_j3"/>
+
+        <actuatorfrc name="sens_tau_FL_j1" actuator="act_FL_j1"/>
+        <actuatorfrc name="sens_tau_FL_j2" actuator="act_FL_j2"/>
+        <actuatorfrc name="sens_tau_FL_j3" actuator="act_FL_j3"/>
+        
+        <force name="sens_force_FL" site="FL_tip_site"/>
+    </sensor>
+
+</mujoco>

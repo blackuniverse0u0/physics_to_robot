@@ -1,0 +1,37 @@
+<mujoco>
+  <option gravity="0 0 -9.81" timestep="0.001"/>
+  
+  <asset>
+    <texture name="grid" type="2d" builtin="checker" width="512" height="512" rgb1=".1 .2 .3" rgb2=".2 .3 .4"/>
+    <material name="grid" texture="grid" texrepeat="1 1" texuniform="true" reflectance=".2"/>
+  </asset>
+  
+  <worldbody>
+    <light pos="0 0 2" mode="trackcom"/>
+    <geom name="ground" type="plane" pos="0 0 -0.5" size="2 2 .1" material="grid"/>
+    
+    <body name="link1" pos="0 0 0">
+      <joint name="joint1" type="hinge" axis="0 0 1" pos="0 0 0" damping="0.1"/>
+      <geom type="capsule" fromto="0 0 0 0.5 0 0" size="0.02" rgba="0.8 0.2 0.2 0.5" mass="0.01"/>
+      
+      <body name="mass1" pos="0.5 0 0">
+        <geom type="sphere" size="0.08" rgba="0.8 0.2 0.2 1" mass="1.0"/>
+        
+        <body name="link2" pos="0 0 0">
+          <joint name="joint2" type="hinge" axis="0 0 1" pos="0 0 0" damping="0.1"/>
+          <geom type="capsule" fromto="0 0 0 0.5 0 0" size="0.02" rgba="0.2 0.8 0.2 0.5" mass="0.01"/>
+          
+          <body name="mass2" pos="0.5 0 0">
+            <geom type="sphere" size="0.08" rgba="0.2 0.8 0.2 1" mass="1.0"/>
+            <site name="end_effector" pos="0 0 0" size="0.06" rgba="0 0 1 1"/>
+          </body>
+        </body>
+      </body>
+    </body>
+  </worldbody>
+  
+  <actuator>
+    <motor name="motor1" joint="joint1" gear="1" ctrllimited="true" ctrlrange="-50 50"/>
+    <motor name="motor2" joint="joint2" gear="1" ctrllimited="true" ctrlrange="-50 50"/>
+  </actuator>
+</mujoco>

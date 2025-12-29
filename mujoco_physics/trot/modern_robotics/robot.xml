@@ -1,0 +1,62 @@
+<mujoco model="biped_triple_pendulum">
+    <compiler angle="radian" coordinate="local" inertiafromgeom="true"/>
+    <option gravity="0 0 -9.81" integrator="RK4" timestep="0.01"/>
+    
+    <worldbody>
+        <light diffuse=".5 .5 .5" pos="0 0 3" dir="0 0 -1"/>
+        <geom type="plane" size="2 2 0.1" rgba=".9 .9 .9 1"/>
+        
+        <body name="base_link" pos="0 0 1.0">
+            <geom type="box" size="0.2 0.15 0.05" rgba="0.2 0.2 0.2 1"/>
+            
+            <body name="L_link1" pos="0 0.15 0">
+                <joint name="L_joint1" type="hinge" axis="1 0 0" pos="0 0 0"/> <geom type="capsule" fromto="0 0 0 0 0.1 0" size="0.03" rgba="1 0 0 1"/>
+                
+                <body name="L_link2" pos="0 0.1 0">
+                    <joint name="L_joint2" type="hinge" axis="0 1 0" pos="0 0 0"/> <geom type="capsule" fromto="0 0 0 0 0 -0.3" size="0.03" rgba="0 1 0 1"/>
+                    
+                    <body name="L_link3" pos="0 0 -0.3">
+                        <joint name="L_joint3" type="hinge" axis="0 1 0" pos="0 0 0"/> <geom type="capsule" fromto="0 0 0 0 0 -0.3" size="0.03" rgba="0 0 1 1"/>
+                        <body name="L_foot" pos="0 0 -0.3">
+                            <site name="L_tip" pos="0 0 0" size="0.02" rgba="1 1 0 1"/>
+                        </body>
+                    </body>
+                </body>
+            </body>
+
+            <body name="R_link1" pos="0 -0.15 0">
+                <joint name="R_joint1" type="hinge" axis="1 0 0" pos="0 0 0"/> <geom type="capsule" fromto="0 0 0 0 -0.1 0" size="0.03" rgba="1 0 0 1"/>
+                
+                <body name="R_link2" pos="0 -0.1 0">
+                    <joint name="R_joint2" type="hinge" axis="0 1 0" pos="0 0 0"/> <geom type="capsule" fromto="0 0 0 0 0 -0.3" size="0.03" rgba="0 1 0 1"/>
+                    
+                    <body name="R_link3" pos="0 0 -0.3">
+                        <joint name="R_joint3" type="hinge" axis="0 1 0" pos="0 0 0"/> <geom type="capsule" fromto="0 0 0 0 0 -0.3" size="0.03" rgba="0 0 1 1"/>
+                        <body name="R_foot" pos="0 0 -0.3">
+                            <site name="R_tip" pos="0 0 0" size="0.02" rgba="1 1 0 1"/>
+                        </body>
+                    </body>
+                </body>
+            </body>
+        </body>
+    </worldbody>
+
+    <!-- <actuator>
+        <motor joint="L_joint1" ctrlrange="-100 100" gear="1"/>
+        <motor joint="L_joint2" ctrlrange="-100 100" gear="1"/>
+        <motor joint="L_joint3" ctrlrange="-100 100" gear="1"/>
+        <motor joint="R_joint1" ctrlrange="-100 100" gear="1"/>
+        <motor joint="R_joint2" ctrlrange="-100 100" gear="1"/>
+        <motor joint="R_joint3" ctrlrange="-100 100" gear="1"/>
+    </actuator> -->
+
+    <actuator>
+        <motor joint="L_joint1" ctrlrange="-10 10" gear="1"/>
+        <motor joint="L_joint2" ctrlrange="-10 10" gear="1"/>
+        <motor joint="L_joint3" ctrlrange="-10 10" gear="1"/>
+        <motor joint="R_joint1" ctrlrange="-10 10" gear="1"/>
+        <motor joint="R_joint2" ctrlrange="-10 10" gear="1"/>
+        <motor joint="R_joint3" ctrlrange="-10 10" gear="1"/>
+    </actuator>
+
+</mujoco>

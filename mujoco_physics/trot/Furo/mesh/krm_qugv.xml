@@ -1,0 +1,98 @@
+<mujoco model="krm_qugv">
+    <compiler angle="radian" />
+    <size njmax="500" nconmax="100" />
+    <asset>
+        <mesh name="TORSO" file="TORSO.STL" />
+        <mesh name="FL_HIP" file="FL_HIP.STL" />
+        <mesh name="FL_THIGH" file="FL_THIGH.STL" />
+        <mesh name="FL_CALF" file="FL_CALF.STL" />
+        <mesh name="FR_HIP" file="FR_HIP.STL" />
+        <mesh name="FR_THIGH" file="FR_THIGH.STL" />
+        <mesh name="FR_CALF" file="FR_CALF.STL" />
+        <mesh name="RL_HIP" file="RL_HIP.STL" />
+        <mesh name="RL_THIGH" file="RL_THIGH.STL" />
+        <mesh name="RL_CALF" file="RL_CALF.STL" />
+        <mesh name="RR_HIP" file="RR_HIP.STL" />
+        <mesh name="RR_THIGH" file="RR_THIGH.STL" />
+        <mesh name="RR_CALF" file="RR_CALF.STL" />
+        <texture name="texskybox" type="skybox" builtin="gradient" rgb1="0.3 0.5 0.7" rgb2="0 0 0" width="512" height="512"/>
+
+        <texture name="texplane" type="2d" builtin="checker" rgb1=".2 .3 .4" rgb2=".1 0.15 0.2" width="512" height="512" mark="cross" markrgb=".8 .8 .8"/>
+
+        <texture name="texgeom" type="cube" builtin="flat" mark="cross" width="127" height="1278"
+            rgb1="0.8 0.6 0.4" rgb2="0.8 0.6 0.4" markrgb="1 1 1" random="0.01"/>
+
+        <material name="matplane" reflectance="0.3" texture="texplane" texrepeat="1 1" texuniform="true"/>
+
+        <material name="matgeom" texture="texgeom" texuniform="true" rgba="0.8 0.6 .4 1"/>
+    </asset>
+    <worldbody>
+        
+        <geom name="floor" pos="0 0 -0.5" size="0 0 .25" type="plane" material="matplane" condim="3"/>
+
+        <light directional="false" diffuse=".2 .2 .2" specular="0 0 0" pos="0 0 5" dir="0 0 -1" castshadow="false"/>
+        <!-- <light mode="targetbodycom" target="torso" directional="false" diffuse=".8 .8 .8" specular="0.3 0.3 0.3" pos="0 0 4.0" dir="0 0 -1"/> -->
+        
+        <geom type="mesh" mesh="TORSO" />
+        <body name="FL_HIP" pos="0.3985 0.07 0">
+            <inertial pos="-0.009 0.001 0" quat="0.707107 0 0 0.707107" mass="1.683" diaginertia="0.004 0.003 0.003" />
+            <joint name="FL_HR_JOINT" pos="0 0 0" axis="1 0 0" limited="true" range="-0.785 0.785" />
+            <geom type="mesh" mesh="FL_HIP" />
+            <body name="FL_THIGH" pos="0 0.11125 0">
+                <inertial pos="-0.007 -0.022 -0.056" quat="0.39736 -0.0517763 0.0299859 0.91571" mass="3.615" diaginertia="0.0485918 0.0460097 0.00639845" />
+                <joint name="FL_HP_JOINT" pos="0 0 0" axis="0 1 0" limited="true" range="-2.356 2.356" />
+                <geom type="mesh" mesh="FL_THIGH" />
+                <body name="FL_CALF" pos="0 0 -0.35">
+                    <inertial pos="0.002 0 -0.171" quat="0.707107 0 0 0.707107" mass="0.968" diaginertia="0.021 0.02 0.001" />
+                    <joint name="FL_KN_JOINT" pos="0 0 0" axis="0 1 0" limited="true" range="-2.844 0" />
+                    <geom type="mesh" mesh="FL_CALF" />
+                </body>
+            </body>
+        </body>
+        <body name="FR_HIP" pos="0.3985 -0.07 0">
+            <inertial pos="-0.009 -0.001 0" quat="0.707107 0 0 0.707107" mass="1.683" diaginertia="0.004 0.003 0.003" />
+            <joint name="FR_HR_JOINT" pos="0 0 0" axis="1 0 0" limited="true" range="-0.785 0.785" />
+            <geom type="mesh" mesh="FR_HIP" />
+            <body name="FR_THIGH" pos="0 -0.11125 0">
+                <inertial pos="-0.007 0.022 -0.056" quat="0.91571 0.0299859 -0.0517763 0.39736" mass="3.617" diaginertia="0.0485918 0.0460097 0.00639845" />
+                <joint name="FR_HP_JOINT" pos="0 0 0" axis="0 -1 0" limited="true" range="-2.356 2.356" />
+                <geom type="mesh" mesh="FR_THIGH" />
+                <body name="FR_CALF" pos="0 0 -0.35">
+                    <inertial pos="0.002 0 -0.171" quat="0.707107 0 0 0.707107" mass="0.968" diaginertia="0.021 0.02 0.001" />
+                    <joint name="FR_KN_JOINT" pos="0 0 0" axis="0 -1 0" limited="true" range="0 2.844" />
+                    <geom type="mesh" mesh="FR_CALF" />
+                </body>
+            </body>
+        </body>
+        <body name="RL_HIP" pos="-0.3985 0.07 0">
+            <inertial pos="0.009 0.001 0" quat="0.707107 0 0 0.707107" mass="1.683" diaginertia="0.004 0.003 0.003" />
+            <joint name="RL_HR_JOINT" pos="0 0 0" axis="-1 0 0" limited="true" range="-0.785 0.785" />
+            <geom type="mesh" mesh="RL_HIP" />
+            <body name="RL_THIGH" pos="0 0.11125 0">
+                <inertial pos="0.007 -0.022 -0.056" quat="0.91571 -0.0299859 0.0517763 0.39736" mass="3.617" diaginertia="0.0485918 0.0460097 0.00639845" />
+                <joint name="RL_HP_JOINT" pos="0 0 0" axis="0 1 0" limited="true" range="-2.356 2.356" />
+                <geom type="mesh" mesh="RL_THIGH" />
+                <body name="RL_CALF" pos="0 0 -0.35">
+                    <inertial pos="-0.002 0 -0.171" quat="0.707107 0 0 0.707107" mass="0.968" diaginertia="0.021 0.02 0.001" />
+                    <joint name="RL_KN_JOINT" pos="0 0 0" axis="0 1 0" limited="true" range="0 2.844" />
+                    <geom type="mesh" mesh="RL_CALF" />
+                </body>
+            </body>
+        </body>
+        <body name="RR_HIP" pos="-0.3985 -0.07 0">
+            <inertial pos="0.009 -0.001 0" quat="0.707107 0 0 0.707107" mass="1.683" diaginertia="0.004 0.003 0.003" />
+            <joint name="RR_HR_JOINT" pos="0 0 0" axis="-1 0 0" limited="true" range="-0.785 0.785" />
+            <geom type="mesh" mesh="RR_HIP" />
+            <body name="RR_THIGH" pos="0 -0.11125 0">
+                <inertial pos="0.007 0.022 -0.056" quat="0.39736 0.0517763 -0.0299859 0.91571" mass="3.615" diaginertia="0.0485918 0.0460097 0.00639845" />
+                <joint name="RR_HP_JOINT" pos="0 0 0" axis="0 -1 0" limited="true" range="-2.356 2.356" />
+                <geom type="mesh" mesh="RR_THIGH" />
+                <body name="RR_CALF" pos="0 0 -0.35">
+                    <inertial pos="-0.002 0 -0.171" quat="0.707107 0 0 0.707107" mass="0.968" diaginertia="0.021 0.02 0.001" />
+                    <joint name="RR_KN_JOINT" pos="0 0 0" axis="0 -1 0" limited="true" range="-2.844 0" />
+                    <geom type="mesh" mesh="RR_CALF" />
+                </body>
+            </body>
+        </body>
+    </worldbody>
+</mujoco>

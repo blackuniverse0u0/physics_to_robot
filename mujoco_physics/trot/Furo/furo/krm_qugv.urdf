@@ -1,0 +1,975 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="krm_qugv">
+  <link
+    name="TORSO">
+    <inertial>
+      <origin
+        xyz="-0.001 0.01 -0.01"
+        rpy="0 0 0" />
+      <mass
+        value="15.702" />
+      <inertia
+        ixx="0.12"
+        ixy="-0.002"
+        ixz="0.001"
+        iyy="0.487"
+        iyz="-0.001"
+        izz="0.553" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://krm_qugv/meshes/TORSO.STL" />
+      </geometry>
+      <material
+        name="black">
+        <color
+          rgba="0.13 0.13 0.13 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://krm_qugv/meshes/TORSO.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="FL_HIP">
+    <inertial>
+      <origin
+        xyz="-0.009 0.001 0"
+        rpy="0 0 0" />
+      <mass
+        value="1.683" />
+      <inertia
+        ixx="0.003"
+        ixy="0"
+        ixz="0"
+        iyy="0.004"
+        iyz="0"
+        izz="0.003" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://krm_qugv/meshes/FL_HIP.STL" />
+      </geometry>
+      <material
+        name="black">
+        <color
+          rgba="0.5 0.5 0.5 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://krm_qugv/meshes/FL_HIP.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="FL_HR_JOINT"
+    type="revolute">
+    <origin
+      xyz="0.3985 0.07 0"
+      rpy="0 0 0" />
+    <parent
+      link="TORSO" />
+    <child
+      link="FL_HIP" />
+    <axis
+      xyz="1 0 0" />
+    <limit
+      lower="-0.785"
+      upper="0.785"
+      effort="150"
+      velocity="100" />
+  </joint>
+  <link
+    name="FL_THIGH">
+    <inertial>
+      <origin
+        xyz="-0.007 -0.022 -0.056"
+        rpy="0 0 0" />
+      <mass
+        value="3.615" />
+      <inertia
+        ixx="0.047"
+        ixy="-0.001"
+        ixz="0.003"
+        iyy="0.047"
+        iyz="-0.004"
+        izz="0.007" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://krm_qugv/meshes/FL_THIGH.STL" />
+      </geometry>
+      <material
+        name="black">
+        <color
+          rgba="0.5 0.5 0.5 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://krm_qugv/meshes/FL_THIGH.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="FL_HP_JOINT"
+    type="revolute">
+    <origin
+      xyz="0 0.11125 0"
+      rpy="0 0 0" />
+    <parent
+      link="FL_HIP" />
+    <child
+      link="FL_THIGH" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-2.356"
+      upper="2.356"
+      effort="150"
+      velocity="100" />
+  </joint>
+  <link
+    name="FL_CALF">
+    <inertial>
+      <origin
+        xyz="0.002 0 -0.171"
+        rpy="0 0 0" />
+      <mass
+        value="0.968" />
+      <inertia
+        ixx="0.02"
+        ixy="0"
+        ixz="0"
+        iyy="0.021"
+        iyz="0"
+        izz="0.001" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://krm_qugv/meshes/FL_CALF.STL" />
+      </geometry>
+      <material
+        name="black">
+        <color
+          rgba="0.5 0.5 0.5 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://krm_qugv/meshes/FL_CALF.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="FL_KN_JOINT"
+    type="revolute">
+    <origin
+      xyz="0 0 -0.35"
+      rpy="0 0 0" />
+    <parent
+      link="FL_THIGH" />
+    <child
+      link="FL_CALF" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-2.844"
+      upper="0"
+      effort="150"
+      velocity="100" />
+  </joint>
+  <link
+    name="FL_TIP">
+    <inertial>
+      <origin
+        xyz="0 -0.004 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.00001" />
+      <inertia
+        ixx="0"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://krm_qugv/meshes/FL_TIP.STL" />
+      </geometry>
+      <material
+        name="black">
+        <color
+          rgba="0.5 0.5 0.5 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://krm_qugv/meshes/FL_TIP.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="FL_TP_JOINT"
+    type="revolute">
+    <origin
+      xyz="0 0 -0.35"
+      rpy="0 0 0" />
+    <parent
+      link="FL_CALF" />
+    <child
+      link="FL_TIP" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="FR_HIP">
+    <inertial>
+      <origin
+        xyz="-0.009 -0.001 0"
+        rpy="0 0 0" />
+      <mass
+        value="1.683" />
+      <inertia
+        ixx="0.003"
+        ixy="0"
+        ixz="0"
+        iyy="0.004"
+        iyz="0"
+        izz="0.003" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://krm_qugv/meshes/FR_HIP.STL" />
+      </geometry>
+      <material
+        name="black">
+        <color
+          rgba="0.5 0.5 0.5 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://krm_qugv/meshes/FR_HIP.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="FR_HR_JOINT"
+    type="revolute">
+    <origin
+      xyz="0.3985 -0.07 0"
+      rpy="0 0 0" />
+    <parent
+      link="TORSO" />
+    <child
+      link="FR_HIP" />
+    <axis
+      xyz="1 0 0" />
+    <limit
+      lower="-0.785"
+      upper="0.785"
+      effort="150"
+      velocity="100" />
+  </joint>
+  <link
+    name="FR_THIGH">
+    <inertial>
+      <origin
+        xyz="-0.007 0.022 -0.056"
+        rpy="0 0 0" />
+      <mass
+        value="3.617" />
+      <inertia
+        ixx="0.047"
+        ixy="0.001"
+        ixz="0.003"
+        iyy="0.047"
+        iyz="0.004"
+        izz="0.007" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://krm_qugv/meshes/FR_THIGH.STL" />
+      </geometry>
+      <material
+        name="black">
+        <color
+          rgba="0.5 0.5 0.5 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://krm_qugv/meshes/FR_THIGH.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="FR_HP_JOINT"
+    type="revolute">
+    <origin
+      xyz="0 -0.11125 0"
+      rpy="0 0 0" />
+    <parent
+      link="FR_HIP" />
+    <child
+      link="FR_THIGH" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      lower="-2.356"
+      upper="2.356"
+      effort="150"
+      velocity="100" />
+  </joint>
+  <link
+    name="FR_CALF">
+    <inertial>
+      <origin
+        xyz="0.002 0 -0.171"
+        rpy="0 0 0" />
+      <mass
+        value="0.968" />
+      <inertia
+        ixx="0.02"
+        ixy="0"
+        ixz="0"
+        iyy="0.021"
+        iyz="0"
+        izz="0.001" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://krm_qugv/meshes/FR_CALF.STL" />
+      </geometry>
+      <material
+        name="black">
+        <color
+          rgba="0.5 0.5 0.5 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://krm_qugv/meshes/FR_CALF.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="FR_KN_JOINT"
+    type="revolute">
+    <origin
+      xyz="0 0 -0.35"
+      rpy="0 0 0" />
+    <parent
+      link="FR_THIGH" />
+    <child
+      link="FR_CALF" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      lower="0"
+      upper="2.844"
+      effort="150"
+      velocity="100" />
+  </joint>
+  <link
+    name="FR_TIP">
+    <inertial>
+      <origin
+        xyz="0 -0.004 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.00001" />
+      <inertia
+        ixx="0"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://krm_qugv/meshes/FR_TIP.STL" />
+      </geometry>
+      <material
+        name="black">
+        <color
+          rgba="0.5 0.5 0.5 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://krm_qugv/meshes/FR_TIP.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="FR_TP_JOINT"
+    type="revolute">
+    <origin
+      xyz="0 0 -0.35"
+      rpy="0 0 0" />
+    <parent
+      link="FR_CALF" />
+    <child
+      link="FR_TIP" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="RL_HIP">
+    <inertial>
+      <origin
+        xyz="0.009 0.001 0"
+        rpy="0 0 0" />
+      <mass
+        value="1.683" />
+      <inertia
+        ixx="0.003"
+        ixy="0"
+        ixz="0"
+        iyy="0.004"
+        iyz="0"
+        izz="0.003" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://krm_qugv/meshes/RL_HIP.STL" />
+      </geometry>
+      <material
+        name="black">
+        <color
+          rgba="0.5 0.5 0.5 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://krm_qugv/meshes/RL_HIP.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="RL_HR_JOINT"
+    type="revolute">
+    <origin
+      xyz="-0.3985 0.07 0"
+      rpy="0 0 0" />
+    <parent
+      link="TORSO" />
+    <child
+      link="RL_HIP" />
+    <axis
+      xyz="-1 0 0" />
+    <limit
+      lower="-0.785"
+      upper="0.785"
+      effort="150"
+      velocity="100" />
+  </joint>
+  <link
+    name="RL_THIGH">
+    <inertial>
+      <origin
+        xyz="0.007 -0.022 -0.056"
+        rpy="0 0 0" />
+      <mass
+        value="3.617" />
+      <inertia
+        ixx="0.047"
+        ixy="0.001"
+        ixz="-0.003"
+        iyy="0.047"
+        iyz="-0.004"
+        izz="0.007" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://krm_qugv/meshes/RL_THIGH.STL" />
+      </geometry>
+      <material
+        name="black">
+        <color
+          rgba="0.5 0.5 0.5 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://krm_qugv/meshes/RL_THIGH.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="RL_HP_JOINT"
+    type="revolute">
+    <origin
+      xyz="0 0.11125 0"
+      rpy="0 0 0" />
+    <parent
+      link="RL_HIP" />
+    <child
+      link="RL_THIGH" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-2.356"
+      upper="2.356"
+      effort="150"
+      velocity="100" />
+  </joint>
+  <link
+    name="RL_CALF">
+    <inertial>
+      <origin
+        xyz="-0.002 0 -0.171"
+        rpy="0 0 0" />
+      <mass
+        value="0.968" />
+      <inertia
+        ixx="0.02"
+        ixy="0"
+        ixz="0"
+        iyy="0.021"
+        iyz="0"
+        izz="0.001" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://krm_qugv/meshes/RL_CALF.STL" />
+      </geometry>
+      <material
+        name="black">
+        <color
+          rgba="0.5 0.5 0.5 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://krm_qugv/meshes/RL_CALF.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="RL_KN_JOINT"
+    type="revolute">
+    <origin
+      xyz="0 0 -0.35"
+      rpy="0 0 0" />
+    <parent
+      link="RL_THIGH" />
+    <child
+      link="RL_CALF" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="0"
+      upper="2.844"
+      effort="150"
+      velocity="100" />
+  </joint>
+  <link
+    name="RL_TIP">
+    <inertial>
+      <origin
+        xyz="0 0.004 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.00001" />
+      <inertia
+        ixx="0"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://krm_qugv/meshes/RL_TIP.STL" />
+      </geometry>
+      <material
+        name="black">
+        <color
+          rgba="0.5 0.5 0.5 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://krm_qugv/meshes/RL_TIP.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="RL_TP_JOINT"
+    type="revolute">
+    <origin
+      xyz="0 0 -0.35"
+      rpy="0 0 0" />
+    <parent
+      link="RL_CALF" />
+    <child
+      link="RL_TIP" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="RR_HIP">
+    <inertial>
+      <origin
+        xyz="0.009 -0.001 0"
+        rpy="0 0 0" />
+      <mass
+        value="1.683" />
+      <inertia
+        ixx="0.003"
+        ixy="0"
+        ixz="0"
+        iyy="0.004"
+        iyz="0"
+        izz="0.003" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://krm_qugv/meshes/RR_HIP.STL" />
+      </geometry>
+      <material
+        name="black">
+        <color
+          rgba="0.5 0.5 0.5 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://krm_qugv/meshes/RR_HIP.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="RR_HR_JOINT"
+    type="revolute">
+    <origin
+      xyz="-0.3985 -0.07 0"
+      rpy="0 0 0" />
+    <parent
+      link="TORSO" />
+    <child
+      link="RR_HIP" />
+    <axis
+      xyz="-1 0 0" />
+    <limit
+      lower="-0.785"
+      upper="0.785"
+      effort="150"
+      velocity="100" />
+  </joint>
+  <link
+    name="RR_THIGH">
+    <inertial>
+      <origin
+        xyz="0.007 0.022 -0.056"
+        rpy="0 0 0" />
+      <mass
+        value="3.615" />
+      <inertia
+        ixx="0.047"
+        ixy="-0.001"
+        ixz="-0.003"
+        iyy="0.047"
+        iyz="0.004"
+        izz="0.007" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://krm_qugv/meshes/RR_THIGH.STL" />
+      </geometry>
+      <material
+        name="black">
+        <color
+          rgba="0.5 0.5 0.5 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://krm_qugv/meshes/RR_THIGH.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="RR_HP_JOINT"
+    type="revolute">
+    <origin
+      xyz="0 -0.11125 0"
+      rpy="0 0 0" />
+    <parent
+      link="RR_HIP" />
+    <child
+      link="RR_THIGH" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      lower="-2.356"
+      upper="2.356"
+      effort="150"
+      velocity="100" />
+  </joint>
+  <link
+    name="RR_CALF">
+    <inertial>
+      <origin
+        xyz="-0.002 0 -0.171"
+        rpy="0 0 0" />
+      <mass
+        value="0.968" />
+      <inertia
+        ixx="0.02"
+        ixy="0"
+        ixz="0"
+        iyy="0.021"
+        iyz="0"
+        izz="0.001" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://krm_qugv/meshes/RR_CALF.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.5 0.5 0.5 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://krm_qugv/meshes/RR_CALF.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="RR_KN_JOINT"
+    type="revolute">
+    <origin
+      xyz="0 0 -0.35"
+      rpy="0 0 0" />
+    <parent
+      link="RR_THIGH" />
+    <child
+      link="RR_CALF" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      lower="-2.844"
+      upper="0"
+      effort="150"
+      velocity="100" />
+  </joint>
+  <link
+    name="RR_TIP">
+    <inertial>
+      <origin
+        xyz="0 0.004 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.00001" />
+      <inertia
+        ixx="0"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://krm_qugv/meshes/RR_TIP.STL" />
+      </geometry>
+        <material
+          name="black">
+          <color
+            rgba="0.5 0.5 0.5 1" />
+        </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://krm_qugv/meshes/RR_TIP.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="RR_TP_JOINT"
+    type="revolute">
+    <origin
+      xyz="0 0 -0.35"
+      rpy="0 0 0" />
+    <parent
+      link="RR_CALF" />
+    <child
+      link="RR_TIP" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+</robot>

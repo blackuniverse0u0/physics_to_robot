@@ -1,0 +1,7 @@
+<mujoco model="qugv scene">
+  <!-- 로봇 모델 -->
+  <include file="furo/qugv.xml"/>
+
+  <!-- 환경 파일 (door.xml 또는 environment.xml 중 선택) -->
+  <include file="env/env.xml"/>
+</mujoco>

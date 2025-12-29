@@ -1,0 +1,7 @@
+<mujoco model="qugv scene (corrected force limits)">
+  <!-- 로봇 모델 (force limit 수정 버전) -->
+  <include file="qugv_corrected.xml"/>
+
+  <!-- 환경 파일 -->
+  <include file="../Furo/env/env.xml"/>
+</mujoco>
